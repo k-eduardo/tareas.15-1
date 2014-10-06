@@ -1,0 +1,106 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,mexico]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{marvosym}
+\usepackage{wrapfig}
+\usepackage{breqn}
+\usepackage{lalo}
+\usepackage{hyperref}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\title{Primera tarea del curso}
+\date{Fecha de entrega: lunes 18 de agosto}
+
+\newenvironment{modenumerate}
+  {\enumerate\setupmodenumerate}
+  {\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+  \global\moditemfalse
+  \let\origmakelabel\makelabel
+  \def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+  \def\makelabel##1{%
+    \origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+    \global\moditemfalse}%
+}
+
+\begin{document}\maketitle
+
+
+
+\vspace{0.1cm}
+
+Resuelvan los siguientes problemas. Si tienen dudas, \href{mailto:ock.escalera@gmail.com}{envíenme un correo}.
+
+
+\section{Problemas introductorios}
+
+\begin{modenumerate}
+
+\moditem{*} En general, la teoría cuántica es relevante cuando la longitud de onda de de Broglie $(\lambda=h/p)$ asociada a la partícula es más grande que la longitud característica $(d)$ del sistema. En equilibrio térmico a temperatura T (absoluta), el promedio de la energía cinética es:
+
+\begin{equation}\label{energia}
+\langle \frac{p^2}{2m} \rangle = \frac{3}{2}k_BT
+\end{equation}
+
+Entonces, la longitud de onda de de Broglie es, típicamente:
+
+\begin{equation}\label{lambda}
+\lambda = \frac{h}{\sqrt{3mk_BT}}
+\end{equation}
+
+El propósito de este problema es que anticipen qué sistemas deben pueden ser descritos clásicamente y cuáles requieren de un tratamiento cuántico.
+
+\begin{enumerate}
+\item Obtengan \eqref{lambda} a partir de \eqref{energia}.
+\renewcommand{\theenumi}{\Alph{enumi}}
+\item \textbf{Sólidos} La distancia interatómica en la red de un sólido típico es de cerca de 0.3nm. Encuentren la temperatura a partir de la cual los electrones libres\footnote{En un sólido, los electrones internos están atados al núcleo y para ellos, la distancia característica sería el radio del átomo. Para los electrones externos, que no están \emph{amarrados} al átomo, la distancia relevante en la descripción de su dinámica es la separación interatómica. Este problema refiere a los electrones externos.} deben ser descritos dentro del marco teórico que ofrece la física cuántica. ¿Cuál es la tempertura análoga para los núcleos? (Utilicen el sodio como caso típico.)
+\item \textbf{Gases} ¿Para qué temperaturas los átomos de un gas ideal a presión P tienen comportamiento cuántico? (Supongan que la distribución de las partículas del gas es uniforme.)
+\end{enumerate}
+
+\item Determinen la densidad promedio de fotones del Universo, utilizando el hecho de que éste puede tratarse como un cuerpo negro a 2.7 K.
+
+\item Consideren un ``átomo de Bohr'' formado por dos partículas neutras con masas $m_p$ y $m_e$, la masa en reposo del protón y del electrón respectivamente, ligados por su interacción gravitatoria. Determinen el tamaño y la energía de amarre (en eV) de este sistema.
+
+
+
+
+
+\section{Problemas sobre los temas vistos en la primera semana de clases}
+
+\moditem{*} Resolver una ecuación de eigenvalores $\hat{L}\psi = \lambda \psi$ significa determinar las eigenfunciones $\psi_n$ que la satisfacen y cumplen ciertos requisitos, así como encontrar los correspondientes valores propios $\lambda_n$. Consideren el siguiente problema de valores propios (eigenvalores) con condiciones a la frontera.
+\begin{dmath}
+{\frac{d^2 \psi}{dx^2}(x) + \lambda\psi(x) = 0,}\\
+ {\psi(0) = 0,}\\ {\frac{d\psi}{dx}(1) + \psi(1) = 0.}
+\end{dmath}
+
+\begin{enumerateL}
+\item ¿Existe una solución no trivial para el caso $\lambda = 0$?
+\item Para $\lambda>0$, escribe la expresión que deben satisfacer los valores propios como una igualdad entre dos funciones. Para aproximar los valores numéricos de $\lambda_n$ se puede recurrir a algún método numérico, pero mejor vamos a hacer otra cosa... Grafiquen cada una de las funciones anteriores por separado y muestren así que los puntos de intersección son tales que $\lambda_n \approx \frac{(2n-1)^2\pi^2}{4}$ a medida que crece $\lambda$.
+\item ¿Qué esperarían para $\lambda<0$? ¿Habrá soluciones para eigenvalores complejos? (Opcional)
+\end{enumerateL}
+
+
+\section{Problema para obtener un punto extra en la calificación de esta tarea}
+
+\item Vean el siguiente video. http://www.youtube.com/watch?v=W9yWv5dqSKk (O busquen Yves Couder en youtube.com) De antemano, les pido que ignoren el tono ``hollywoodesco'' en que se presenta. Respondan de forma razonablemente concisa las siguientes preguntas:
+
+\begin{enumerate}
+\renewcommand{\theenumi}{\Alph{enumi}}
+\item ¿Cuál es el tema central del video?
+\item ¿Qué tan relevante consideras que es este experimento para el entendimiento de los fenómenos cuánticos? ¿Por qué?
+\end{enumerate}
+
+
+
+
+
+
+
+\end{modenumerate}
+
+\end{document}

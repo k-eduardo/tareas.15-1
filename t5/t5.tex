@@ -1,0 +1,66 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,mexico]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{marvosym}
+\usepackage{wrapfig}
+\usepackage{breqn}
+\usepackage{lalo}
+\usepackage{hyperref}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\title{Quinta tarea del curso}
+\date{Fecha de entrega: lunes 29 de septiembre}
+
+\newenvironment{modenumerate}
+  {\enumerate\setupmodenumerate}
+  {\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+  \global\moditemfalse
+  \let\origmakelabel\makelabel
+  \def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+  \def\makelabel##1{%
+    \origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+    \global\moditemfalse}%
+}
+
+\begin{document}\maketitle
+
+
+
+\begin{enumerate}
+\section*{Representación en el espacio de momentos}
+ \item En la representación de momentos, la variable dinámica $p$ está dada por el número (la función) $p$. ¿Cuál debe ser la expresión del operador $\hat{x}$ para garantizar que se cumple la relación de conmutación canónica?
+
+\item Si $P$ y $Q$ son funciones analíticas de su argumento, demuestra que:
+\begin{equation*}
+[\hat{x},P(\hat{p})] = i\hbar\lpl{P}{\hat{p}}\hspace{2cm}[\hat{p},Q(\hat{x})] = -i\hbar\lpl{Q}{\hat{x}}.
+\end{equation*}
+
+\section*{Propiedades del conmutador}
+
+\item Demuestra que si $[\hat{F},\hat{G}]=0$, entonces $[\hat{F}^m,\hat{G}^n]=0$ y $[f(\hat{F}),g(\hat{G})]=0$ para funciones $f$ y $g$ funciones analíticas.
+
+\section*{Operadores hermitianos y unitarios}
+
+\item Como la ecuación de Schrödinger es de primer orden en el tiempo, su solución $\Psi(x,t)$ está unívocamente determinada por  $\Psi(0).$ Esta relación puede escribirse en la forma:
+
+\begin{equation*}
+\Psi(t)=\hat{S}(t)\Psi(0)
+\end{equation*}
+en donde $\hat{S}(t)$ es un operador apropiado. Demestra que:
+\begin{enumerate}
+\renewcommand{\theenumi}{\Alph{enumi}}
+\item $\hat{S}(t)$ satisface la ecuación $i\hbar \dot{\hat{S}}(t) = \hat{H}S$ y es un operador unitario, es decir, $\hat{S}^{\dagger}=\hat{S}^{-1}$ aún cuando $\hat{H}$ depende del tiempo.
+\item si el operador $\hat{H}$ no depende del tiempo, entonces $\hat{S}(t)$ tiene la forma $\hat{S}(t) = e^{-i\hat{H}t/\hbar}$ donde, para un operador $A$, $e^A = \sum\limits_{n=0}^\infty \frac{1}{n}A^n$.
+\end{enumerate}
+
+
+\end{enumerate}
+
+
+\end{document}

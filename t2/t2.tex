@@ -1,0 +1,105 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,mexico]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{marvosym}
+\usepackage{wrapfig}
+\usepackage{breqn}
+\usepackage{lalo}
+\usepackage{hyperref}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\title{Segunda tarea del curso}
+\date{Fecha de entrega: lunes 25 de agosto}
+
+\newenvironment{modenumerate}
+  {\enumerate\setupmodenumerate}
+  {\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+  \global\moditemfalse
+  \let\origmakelabel\makelabel
+  \def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+  \def\makelabel##1{%
+    \origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+    \global\moditemfalse}%
+}
+
+\begin{document}\maketitle
+
+\section{La ecuación Schrödinger estacionaria y sus soluciones}
+
+\begin{modenumerate}
+\moditem{} ¿Qué puedes decir sobre la simetría de las soluciones a la ecuación de Schrödinger cuando se tiene un potencial simétrico?
+\moditem{} Un problema importante en mecánica cuántica es el de la partícula sujeta a una fuerza lineal restitutiva (el oscilador armónico). La ecuación de Schrödinger estacionaria para este problema, en una dimensión, tiene la forma:
+
+\begin{equation}
+-\frac{\hbar^2}{2m}\frac{\partial^2 \psi}{\partial x^2}+\frac{1}{2}kx^2\psi = E\psi ,
+\end{equation}
+
+donde $k$ es la constante del oscilador. Se proponen soluciones de los siguientes tipos:
+\begin{enumerate}
+\renewcommand{\theenumi}{\Alph{enumi}}
+\item $\psi = A_1e^{ax^2}+A_2e^{-ax^2}$, con $a$ real y positiva
+\item $\psi = \left( B_1+B_2x\right) e^{-bx^2}$, con $b$ real y positiva.
+\end{enumerate}
+
+Encuentren los valores que deben tener las constantes $A_i$, $B_i$, para que estas funciones sean soluciones (una vez que determinen sus valores, tómense la molestia de comprobar que sean soluciones) de un sistema físico confinado y estén normalizadas a la unidad. Encuentra el valor de $E$ en cada caso, de $a$ y de $b$, en términos de los parámetros del sistema. Comenten acerca de la simetría espacial de las soluciones.
+
+\subsection{Pozo Infinito}
+
+\moditem{} Demuestren que el conjunto $\{\text{sen}\left(\frac{n\pi x}{a}\right)\}_{n\in\{1,2,...\}}$ como subconjunto del espacio vectorial que forman las funciones continuas del intervalo $\left[0,a\right]$ en los reales, bajo la suma y el producto usuales, es ortogonal con el siguiente producto interior
+\begin{equation}f*g=\int_{0}^{a} f(x)g(x)dx.\end{equation}
+Usando la norma inducida por este producto, calculen la norma de los elementos del conjunto.
+
+\moditem{} De acuerdo con el principio de correspondencia, los resultados de la teoría cuántica deben coincidir con los correspondientes de la física clásica en el límite de números cuánticos muy grandes. Demuestren que cuando $n \gg 1$, la probabilidad de encontrar a la partícula en un pozo de potencial infinito en un punto entre $x$ y $x+dx$ es independiente de $x$, tal como predice la física clásica.
+\subsection{Partícula libre}
+\moditem{} Un paquete de partículas libres tiene la siguiente función de onda al tiempo $t=0$:
+\begin{equation}
+\psi(x,t) = Ae^{-ax^2}.
+\end{equation}
+\begin{enumerate}
+\item Usen los resultados del problema 1 para normalizarla.
+\item Encuentren $\psi(x,t)$.
+\end{enumerate}
+
+
+\section{Problema para tener un punto extra}
+
+\moditem{} Consideremos la termodinámica de un conjunto de osciladores armónicos en equilibrio térmico con un baño a temperatura $T$. La primera ley establece que las variables termodinámicas del sistema están regidas por la siguiente ecuación:
+\begin{equation}
+dQ=TdS(T,\omega)=dU+dW=dU(T,\omega)-(U/\omega)d\omega ,
+\end{equation}
+donde $\omega$ es la frecuencia angular de oscilación. La forma particular del trabajo en este problema no la derivaremos, la daremos por cierta. Si les interesa, pueden revisar el Goldstein.
+
+Obtengan las siguientes relaciones relevantes:
+\begin{equation}
+T\left( \frac{\partial S}{\partial T} \right)_\omega =\left(\frac{\partial U}{\partial T}\right)_\omega,\hspace{1cm}
+T\left( \frac{\partial S}{\partial \omega} \right)_T=\left(\frac{\partial U}{\partial \omega}\right)_T-\frac{U}{\omega}.
+\end{equation}
+Manipulando las expresiones anteriores, deriven la siguiente relación:
+\begin{equation}
+\left( \frac{\partial S}{\partial \omega} \right)_T = -\frac{1}{\omega}\left(\frac{\partial U}{\partial T}\right)_\omega .
+\end{equation}
+Construyan ahora la ecuación diferencial para la energía y muestren que su solución es de la forma:
+\begin{equation}
+U(\omega ,T)=\omega f(\omega/T) .
+\end{equation}
+Lo que derivaron en este problema es la llamada ``Ley de Wien'' a partir de la termodinámica clásica. En el límite $T\to 0$, la función $f$ debe tender a una constante. Si suponemos que esta constante no es cero, la llamamos $A$, la energía por modo del oscilador está dada por:
+\begin{equation}
+\omega f((\omega /T) \to \infty) \to A\omega .
+\end{equation}
+La suposición $f(x\to\infty)\to A$ es entonces equivalente a suponer que la energía ``mínima'' del conjunto de osciladores en equilibrio término a temperatura $T=0$ es proporcional a la frecuencia. En el artículo \href{http://scitation.aip.org/content/aapt/journal/ajp/76/10/10.1119/1.2948780}{Statistical consequences of the zero-point energy of the harmonic oscillator}, se muestra que si uno supone $A=0$ se llega a la equipartición de la energía y si en lugar uno propone $A\neq 0$, se obtiene:
+\begin{equation}
+U(\omega ,T)=A\omega \text{coth}\left(\frac{A\omega}{kT}\right) .
+\end{equation}
+
+De suponer que esta ecuación describe la distribución de energía de los osciladores del campo en una cavidad cuando están en equilibrio térmico con un cuerpo negro, por comparación con los resultados experimentales la constante debe ser $A=\frac{\hbar}{2}$, por lo que se puede obtener la Ley de Planck desde la termodinámica clásica, sin necesidad de introducir alguna hipótesis de cuantización. Revisen el artículo para poder responder
+¿cuál es el origen de la \emph{cuantización} de la energía en este sistema desde esta perspectiva diferente? (No es difícil encontrar ni encontrar la sección donde se habla de eso.)
+
+\end{modenumerate}
+
+\end{document}

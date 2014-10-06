@@ -1,0 +1,111 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,mexico]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{marvosym}
+\usepackage{wrapfig}
+\usepackage{breqn}
+\usepackage{lalo}
+\usepackage{hyperref}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\title{Cuarta tarea del curso}
+\date{Fecha de entrega: lunes 8 de septiembre}
+
+\newenvironment{modenumerate}
+  {\enumerate\setupmodenumerate}
+  {\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+  \global\moditemfalse
+  \let\origmakelabel\makelabel
+  \def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+  \def\makelabel##1{%
+    \origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+    \global\moditemfalse}%
+}
+
+\begin{document}\maketitle
+
+
+
+\begin{enumerate}
+\section*{Ecuación completa de Schrödinger y la Regla de Born}
+\item Se tiene un sistema físco con un grado de libertad en el siguiente estado:
+\begin{equation}
+\Psi(x,t) = A\p{\sqrt{\frac{2}{3}}\phi_1 + e^{i\pi /4}\p{\frac{2}{\sqrt{9}}\phi_2 - \sqrt{\frac{2}{3}}\phi_3}},
+\end{equation}
+donde $\phi_i$ son eigenfunciones del hamiltoniano asociado al sistema físico en cuestión. ¿Cuál es la probabilidad de que al realizar una medición de la energía, ésta me arroje el valor $E_2$?
+\item Se tiene una distribución uniforme de partículas al tiempo $t=0$ en una cierta región del espacio, digamos que $\rho(x)=|\psi(x,0)|^2=c$, $c > 0$, cuando $0\leq x \leq L$ y $\psi$ es cero afuera de esta región.
+\begin{enumerate}
+\renewcommand{\theenumi}{\Alph{enumi}}
+\item ¿Cuál debe ser el valor de $c$?
+\item ¿Es necesario conocer el potencial que confina a las partículas para saber si esta distribución evoluciona en el tiempo? Si sí, supón que el potencial es un pozo infinito, ¿cambiará esta distribución en el tiempo? (No es necesario hacer los cálculos para responder esto, puedes usar algún otro argumento siempre y cuando seas formal.)
+\item Nuevamente tomemos un potencial de pozo infinito. ¿Cuál es la probabilidad de encontrar a una partícula con energía $E_n={n}^2\frac{\pi^2\hbar^2}{2mL^2}$? ¿Hay energías que sean eigenvalores a la ecuación de Schrödinger para el pozo infinito y que no se puedan medir cuando el sistema tiene la condición inicial anterior?
+\end{enumerate}
+\section*{Operadores y variables dinámicas}
+\item Sean $\hat{A}$, $\hat{B}$, dos operadores así: $\hat{A}^2 = \mathbb{I}$, $\hat{A}$ y $\hat{B}$ anticonmutan, es decir, $\hat{A}\hat{B} + \hat{B}\hat{A} = 0$. Demuestra que el valor medio de $B$ es cero ($\langle \hat{B} \rangle = 0$) en un eigenestado de $\hat{A}$.
+\item Demuestra que si una variable tiene dispersión cero en un cierto estado, entonces dicho estado corresponde a un eigenestado del operador (hermitiano) asociado a la variable.
+\end{enumerate}
+
+
+\section*{Notas sobre la Regla de Born}
+
+Les pido una disculpa si es que no vieron la Regla de Born en clase para resolver el último problema de la tarea anterior, sin embargo es un tema sumamente importante y debe evaluarse. Para subsanar esto, les envío unas notas que les pueden ser útiles...
+
+Supongamos un sistema con un solo grado de libertad que se encuentra en un estado que se puede escribir como una combiación lineal de eigenestados de un operador $\hat{A}$, por ejemplo el operador hamiltoniano del sistema. La regla de Born nos permite relacionar dicho estado con los resultados experimentales. Veamos cómo es esto.
+
+\subsection*{Lo que está en esta subsección lo pueden omitir si les parece oscuro, es algo que pretende ser una motivación de la Regla de Born.}Un postulado (P1) que vincula a la teoría con la realidad física (y que ustedes ya conocen) dice que el módulo al cuadrado de la función de onda describe la probabilidad de encontrar a la partícula en la región $[x,x+dx]$. Notemos que una función arbitraria de $x$ se puede escribir como
+\begin{equation}
+f(x) = \int dx' f(x')\delta(x-x'),\label{f}
+\end{equation}
+y que
+\begin{equation}
+\hat{x}\delta(x-x') \equiv x\delta(x-x') = x'\delta(x-x').\label{delta}\footnote{Esta igualdad es realmente una igualdad entre distribuciones, pero Dirac se tomó la libertad de tomar a $\delta$ como una función y así es como la mecánica cuántica nació; nos valdremos del abuso de Dirac para evitarnos formalidades que pueden desviarnos del tema y que pueden salirse de lo que podría yo compartirles sin mentiras. Y eso... a ver si no se me van algunas.}
+\end{equation}
+La ecuación \ref{delta} se puede interpretar como una ecuación de eigenvalores. La $\delta(x-x')$, como función de $x$, es eigenfunción del operador de posición $\hat{x}\equiv x$ con eigenvalor $x'$. Valiéndonos de la interpretación física de una ecuación de eigenvalores en mecánica cuántica, esto quiere decir que $x'$ es el valor de la variable $x$ cuando el sistema se encuentra en el estado $\delta(x-x')$.
+
+El postulado P1 entonces se puede reformular de la siguiente forma. Si el sistema se encuentra, a un cierto tiempo, en el estado $\psi_{t_0}(x)$, entonces la probabilidad de que el sistema se encuentre en la posición $x'$,\footnote{En realidad sería en la región $[x',x'+dx']$} es el módulo cuadrado del coeficiente del eigenestado de $\hat{x}$ con eigenvalor $x'$ en la expansión de $\psi_{t_0}(x)$ cuando ésta se escribe en términos de las eigenfunciones del operador asociado a la variable $x$, es decir, en términos de las funciones $\delta(x-x')$. Como se puede ver de la ecuación \eqref{f}, este valor es precisamente $|\psi_{t_0}(x')|^2$. Ésta es la Regla de Born.
+ 
+\subsection*{Aquí ya termina la ``motivación'' y empieza una introducción.}
+
+Empecemos diciendo que el estado de un sistema cuántico está definido por una función de onda (una cosa) $\psi(x,t)$ de \emph{algo} que está relacionado con un cierto sistema físico y no por la posición y el momento (dos cosas jaja) de una partícula puntual, como en la mecánica clásica. El análogo a las ecuaciones de Hamilton para la evolución del estado de un sistema cuántico es la ecuación de Schrödinger (la analogía se ve mejor usando la formulación de Heisenberg que verán después):
+\begin{equation}
+\hat{H}\psi - i\hbar\lpl{\psi}{t} = 0.\label{sch}
+\end{equation}
+
+El estado cuántico entonces está completamente determinado para cualquier tiempo $t$, dado que se conoce el estado (una cosa, pues la ecuación es de orden 1 en el tiempo) en algún tiempo $t=t_0$; éste es justo el programa de la física. Ahora, ¿qué sistema físico representa este estado?, ¿cómo se relaciona el estado cuántico con los sistemas físicos? Pues es un tanto complicado responder estas preguntas, pero veamos qué de dicho estado se puede relacionar con cosas del laboratorio. Empecemos por notar que existen soluciones separables para la ecuación de Schrödinger y tienen la forma:
+\begin{equation}
+\psi_n(x,t) = a_n e^{\frac{-iE_n t}{\hbar}}\phi_n(x),
+\end{equation}
+donde $a_n\in \mathbb{C}$ y $\hat{H}\phi_n(x) = E_n\phi_n(x)$, con $E_n$ real y además con unidades de energía.\footnote{Que $E_n$ es real se puede demostrar y lo hicieron en clase.} Estas soluciones suelen llamarse estacionarias, dado que $|\psi_n(x,t)|^2$ no depende del tiempo y, por P1, esto significaría que la distribución espacial no cambia en el tiempo, es estacionaria. En la intepretación de ensamble, la función de onda (el estado) asociada (asociado) a un ensamle de partículas cuya distribución espacial no cambia en el tiempo, es una solución separable de la ecuación de Schrödinger, es decir, una eigenfunción del hamiloniano por una fase que depende del tiempo.
+Notemos que dado un hamiltoniano (es decir, una vez que se define el sistema físico dentro de la teoría), el estado estacionario $\psi_n$ está completamente caracterizado por el parámetro $E_n$ (o, de forma equivalente, por $n$) -pues las funciones $\phi_n$ quedan definidas cuando se establece $\hat{H}$.\footnote{Recordemos que estamos en un sistema con un grado de libertad, para más dimensiones se necesitan más ``números cuánticos'' (o equivalentemente parámetros) para caraterizar el estado de un sistema.}\footnote{Cuando en mecánica clásica necesito dos parámetros para caracterizar el estado de un sistema físico con un grado de libertad, en mecánica cuántica podría hacerlo con uno para eigenestados.}
+
+Se puede postular de forma consistente con P1, que $E_n$ es el valor de la energía del sistema físico. Postular lo anterior significaría que en un estado estacionario, siempre que yo mida la energía de una (la) partícula que compone a mi sistema cuántico, voy a obtener el mismo valor; y viceversa, un sistema compuesto por partículas con la misma energía,\footnote{No todos los valores de energía los puede tener un cierto sistema cuántico, tiene que ser un valor del conjunto de eigenvalores de $\hat{H}$.} generarán una distribución que no cambia en el tiempo. Si uno piensa en que la función de onda describe a una partícula y no a un ensamble, se podría entonces decir que si mido repetidamente la energía de mi partícula en un eigenestado, siempre tendré la misma.\footnote{Pensar así, naturalmente, tiene el inconveniente de que medir siempre afecta a los sistemas y entonces medir repetidamente al mismo sistema queda como un enunciado que no entiendo. Lo que hago para intepretar esto es usar algo así como la hipótesis de ergodicidad para cambiar una distribución de probabilidad en el tiempo de un sistema como el electrón en el átomo de hidrógeno, por una distribución de probabilidad en un ensamble.} Usualmente los sistemas físicos que se estudian en cuántica están compuestos por muchas partículas; podemos entonces resumir lo anterior así: \emph{siempre que mida la energía de una partícula en un ensamble cuya distribución espacial no cambie en el tiempo, voy a obtener el mismo valor y diré que el sistema se encuentra en el estado $\phi_n$ para el cual es válida la ecuación \eqref{H} con el parámetro $E_n$ igual a la energía que mido.} (Esto, naturalmente, se puede generalizar a más grados de libertad, pero para propósitos de introducir las ideas, es conveniente usar la no degeneración de los sistemas unidimensionales.)
+
+Con las suposiciones anteriores, tomando a los eigenestados del problema de potencial central como los únicos estados energéticos accesibles para los electrones de hidrógenos, la mecánica cuántica pudo dar cuenta del espectro del átomo de hidrógeno (ya después también de otros átomos más grandes) con una precisión increíble y eso impulsó que las hipótesis (postulados) que nos llevaron a la afirmación en itálicas se adoptara como buena.
+
+\subsection*{La Regla de Born}
+
+Se puede demostrar que la solución general a una ecuación con la estructura de \ref{sch} se puede escribir como una combinación lineal de sus soluciones separables, es decir,
+\begin{equation}
+\Psi(x,t) = \sum_n a_n\phi_n(x)e^{\frac{-iE_n t}{\hbar}}.
+\label{psi}
+\end{equation}
+
+Si $\Psi$ está normalizada, como debe ser, entonces $\sum_n |a_n|^2 = 1$. Demuéstralo.
+
+Hagamos ahora énfasis en que $\phi_n$ satisface una ecuación de eigenvalores:
+\begin{equation}
+\hat{H}\phi_n(x) = E_n\phi_n(x).
+\label{H}
+\end{equation}
+Siguiendo la motivación que se presenta en páginas anteriores, uno podría proponer que el valor de $|a_ne^{e^{\frac{-iE_n t}{\hbar}}}|^2 = |a_n|^2$ sea la probabilidad de que el sistema se encuentre en el estado $\phi_n(x)$. Como este estado satisface una ecuación de eigenvalores no degenerados, éste está unívocamente determinado por la energía $E_n$. Se dice entonces que $|a_n|^2$ es la probabilidad de encontrar (medir) en un ensamble, el valor de energía $E_n$. Esto es consistente con los otros postulados y con el experimento.
+
+Como para conocer al tiempo $t=0$ la solución es necesario dar los valores de todas las $a_n$ y éstos pueden determinarse, salvo una fase, por mediciones de la energía al tiempo $t=0$ y como $|a_ne^{\frac{iE_nt}{\hbar}}|^2$ no cambia en el tiempo, parecería que estamos introduciendo a la teoría únicamente el hecho de que la distribución de energía no va a cambiar en el tiempo. Sin embargo es más que eso; podemos modificar el potencial del hamiltoniano en el tiempo y estudiar cómo evoluciona el estado teóricamente. Se encuentra consistencia con la Regla de Born: el módulo al cuadrado de la eigenfunción correpondiente a $\hat{H(t_0)}$ será la probabilidad de medir la energía $E_n(t_0)$ al tiempo $t_0$. Más aún, podemos poner a interaccionar a dos o más sistemas que inicialmente están descritos por una ecuación como \eqref{psi}. El resultado es que, a pesar de que ahora los coeficientes $a_n$ dependerán de las variables de los otros sistemas, la regla de Born sigue aplicando; cuando el sistema que resulta de la interacción tiene asociado un estado enredado, las consecuencias de esto son sorprendentes. Jorge Hirsch hablará de esto en la próxima sesión del seminario Fundamenta Quantorum.
+
+La Regla de Born puede generalizarse a otros operadores y se encuentra siempre consistente con el experimento. Si uno escoge otro operador ($\hat{A}$,por elemplo el momento) para escribir la función de onda $\Psi$, es decir, si el desarrollo se hace en las eigenfunciones de $\hat{A}$ (que formarán también una base de las soluciones para la ecuación de Schrödinger) entonces, el módulo al cuadrado del coeficiente en esa expansión será la probabilidad de medir la variable asociada al operador $\hat{A}$ en el estado $\Psi$. En el caso particular del momento, escribir la función de onda en términos de la base de las eigenfunciones del operador $\hat{p}$, es realizar una transformada de Fourier de la función. Quedará una $\psi(p,t)$ y el módulo al cuadrado del coeficiente de Fourier correspondiente al eigenestado con eigenvalor $p_0$ será la probabilidad de medir una partícula con momento $p_0$.
+\end{document}

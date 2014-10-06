@@ -1,0 +1,79 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,mexico]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{marvosym}
+\usepackage{wrapfig}
+\usepackage{breqn}
+\usepackage{lalo}
+\usepackage{hyperref}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\title{Tercera tarea del curso}
+\date{Fecha de entrega: lunes 1 de septiembre}
+
+\newenvironment{modenumerate}
+  {\enumerate\setupmodenumerate}
+  {\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+  \global\moditemfalse
+  \let\origmakelabel\makelabel
+  \def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+  \def\makelabel##1{%
+    \origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+    \global\moditemfalse}%
+}
+
+\begin{document}\maketitle
+
+\section{Potenciales unidimensionales}
+
+\begin{modenumerate}
+\moditem{} Determina el coeficiente de transmisión para el problema de una barrera de potencial rectangular de ancho $a$ y altura $V_0$.
+
+\item Para el problema del ``potencial escalón'':
+\begin{equation}
+V(x) = \begin{cases}
+0 \lsep{1}{ si} x<0\\
+V_0 \lsep{0.94}{si} x>0,
+\end{cases}
+\end{equation}
+calcula $j(x)$ en las dos regiones. (Si ya conoces la solución, no es necesario que la derives.)
+
+\section{Ecuación de Schrödinger dependiente del tiempo y promedios sobre ensambles (valores esperados).}
+
+\moditem{} \label{item2} Una partícula se encuentra inicialmente en un estado descrito por la función de onda
+\begin{equation}
+\Psi(x,0) = A\left( \psi_1(x)+\psi_2(x)\right),
+\label{Pozo}
+\end{equation}
+donde $\psi_1$ y $\psi_2$ son el estado base y el primer estado excitado del pozo infinito, respectivamente.
+\begin{enumerate}
+\renewcommand{\theenumi}{\Alph{enumi}}
+\item Determina el valor de la constante A. ¿Es necesario cambiar el valor de A para normalizar la función a un tiempo $t>0$? Justifica formalmente.
+\item Encuentra $\Psi(x,t)$ y determina cómo oscila la densidad de probabilidad en el tiempo.
+\item Calcula $\langle x\rangle$ y determina su frecuencia de oscilación.
+\item ¿Esperas que $\langle \hat{H} \rangle$ sea un valor constante en el tiempo? Calcúlalo. ¿Cómo se compara con las energías $E_1$ y $E_2$ de las eigenfunciones?
+\item Agrega ahora una fase relativa en los coeficientes de $\psi_1$ y $\psi_2$ del problema anterior, ahora tenemos un sistema descrito por la función
+\begin{equation}
+\Psi(x,0) = A\left( \psi_1(x) + e^{i\phi} \psi_2(x) \right),
+\label{Pozo2}
+\end{equation}
+donde $\phi$ es una constante. Encuentra $\langle x \rangle$ en este estado.
+\end{enumerate}
+
+\moditem{} Se tiene una distribución uniforme de partículas al tiempo $t=0$ en una cierta región del espacio, digamos que $\rho(x)=|\psi(x,0)|^2=c$, $c > 0$, cuando $0\leq x \leq L$ y $\psi$ es cero afuera de esta región.
+\begin{enumerate}
+\renewcommand{\theenumi}{\Alph{enumi}}
+\item ¿Cuál debe ser el valor de $c$?
+\item ¿Es necesario conocer el potencial que confina a las partículas para saber si este estado evoluciona en el tiempo? Si sí, supón que el potencial es un pozo infinito, ¿cambiará esta distribución en el tiempo? (No es necesario hacer los cálculos para responder esto, puedes usar algún otro argumento siempre y cuando seas formal.)
+\item Nuevamente, tomemos un potencial de pozo infinito. ¿Cuál es la probabilidad de encontrar a una partícula con energía $E_n={n}^2\frac{\pi^2\hbar^2}{2mL^2}$? ¿Hay energías que sean eigenvalores a la ecuación de Schrödinger para el pozo infinito y que no se puedan medir cuando el sistema tiene la condición inicial anterior?
+\end{enumerate}
+
+\end{modenumerate}
+
+\end{document}
