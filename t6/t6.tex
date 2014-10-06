@@ -1,0 +1,56 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,mexico]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{marvosym}
+\usepackage{wrapfig}
+\usepackage{breqn}
+\usepackage{lalo}
+\usepackage{hyperref}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\title{Sexta tarea del curso}
+\date{Fecha de entrega: lunes 13 de octubre}
+
+\newenvironment{modenumerate}
+  {\enumerate\setupmodenumerate}
+  {\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+  \global\moditemfalse
+  \let\origmakelabel\makelabel
+  \def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+  \def\makelabel##1{%
+    \origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+    \global\moditemfalse}%
+}
+
+\begin{document}\maketitle
+
+
+
+\begin{enumerate}
+
+
+\section{Ecuaciones de Heisenberg y el oscilador}
+\item El hamiltoniano que describe un oscilador unidimensional en un campo eléctrico externo $E$ uniforme y constante es:
+\begin{equation*}
+H=\frac{\hat{p}^2(t)}{2m}+\frac{1}{2}m\omega^2\hat{x}^2(t)-eE\hat{x}(t)
+\end{equation*}
+Deriva las ecuaciones de Heisenberg de este sistema y resuélvelas en términos de las condiciones iniciales $\hat{x}(0)$ y $\hat{p}(0)$. Demuestra que $[x(t_1),x(t_2)]\neq 0$ para $t_2 \neq t_1$ en general.
+
+\section{Transiciones dipolares}
+\item Estima la vida media de los primeros dos estados excitados de un electrón que está en un pozo infinito de potencial de ancho $a$ -en la aproximación dipolar.
+
+\section{Oscilador armónico}
+\item Pueden estudiarse las vibraciones de pequeña amplitud en moléculas diatómicas empleando como modelo para el potencial vibracional molecular, el potencial del oscilador armónico, $V=\frac{1}{2}k_{eff} x^2$. Estima el valor de $k_{eff}$ para el ácido clorhídrico, suponiendo que el fotón que se emite por transiciones entre niveles vibracionales está en el infrarrojo: $\lambda\approx 14.5\mu m$.
+
+\item Encuentra la expresión que determina la probabilidad de que una partícula (las partículas) sujeta(s) a un potencial de oscilador armónico $V=\frac{1}{2}m\omega^2 x^2$ se encuentre(n) dentro de la zona clásicamente permitida para las energías asociadas a los eigenestados del oscilador armónico. Calcula el valor numérico de esta probabilidad para el estado base. Podría ser útil saber que $\text{erf} (1) \approx 0.84$.
+
+\end{enumerate}
+
+
+\end{document}
